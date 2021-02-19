@@ -1,0 +1,40 @@
+{% extends "base.html.twig" %}
+
+{% block title %}{{ product.name }} | eshop{% endblock %}
+
+{% block body %}
+    <div class="p-3 mx-auto text-center">
+        <h1 class="display-4">{{ product.name }}</h1>
+    </div>
+
+    <div class="py-5 bg-light">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-10 mx-auto mt-4">
+                    <div class="card mb-3">
+                        {% for label, messages in app.flashes %}
+                            {% for message in messages %}
+                                <div class="alert alert-{{ label }}">
+                                    {{ message }}
+                                </div>
+                            {% endfor %}
+                        {% endfor %}
+                        <div class="row g-0">
+                            <div class="col-md-4">
+                                <img class="img-fluid" src="{{asset('uploads/images/' ~ product.image) }}" alt="{{ product.name  }}">
+                            </div>
+                            <div class="col-md-8">
+                                <div class="card-body">
+                                    <p class="card-text"><h2 class="text-muted">PRIX : {{ product.price }}</h2></p>
+                                    <p class="card-text">{{ product.description | raw }}</p>
+                                    <a href="#" class="btn btn-primary">Acheter</a>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

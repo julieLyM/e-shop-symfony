@@ -1,0 +1,33 @@
+{% extends "base.html.twig" %}
+
+{% block title %}{{ category.name}} | E-shop{% endblock %}
+
+{% block body %}
+    <div class="p-3 mx-auto text-center">
+        <h1 class="display-4">{{ category.name}}</h1>
+    </div>
+   {# {{ dump(category) }} #}
+    <div class="py-5 bg-light">
+        <div class="container">
+            <div class="row">
+                {% for product in category.products%}
+                    <div class="col-md-4 mt-4">
+                        <div class="card">
+                            <img class="img-fluid" src="{{asset('uploads/images/' ~ product.image) }}" alt="{{ product.name  }}">
+                            <div class="card-body">
+                                <h5 class="card-title">{{ product.name }}</h5>
+                                <p class="card-text">{{ product.description }}</p>
+                                <a href="{{ path('default_product', {
+                                    'category' : product.category.0.alias,
+                                    'productalias' : product.alias,
+                                    'id' : product.id
+                                }) }}" class="btn btn-primary">Lire la suite</a>
+
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endblock %}

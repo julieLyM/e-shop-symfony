@@ -1,0 +1,26 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Ajouter un produit{% endblock %}
+
+{% block javascripts  %}
+    {{ parent() }}
+    <script src="https://cdn.ckeditor.com/ckeditor5/25.0.0/classic/ckeditor.js"></script>
+    <script>ClassicEditor.create(document.querySelector('#form_content'))</script>
+{% endblock %}
+
+
+{% block body %}
+    <div class="p-3 mx-auto text-center">
+        <h1 class="display-4">Ajouter un produit</h1>
+    </div>
+
+    <div class="py-5 bg-light">
+        <div class="container">
+            <div class="row">
+                <div class="col-10 mx-auto">
+                    {{ form(form, {attr: {novalidate: 'novalidate'}}) }}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
